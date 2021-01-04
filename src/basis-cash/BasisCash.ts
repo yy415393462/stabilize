@@ -179,7 +179,8 @@ export class BasisCash {
    */
   async buyBonds(amount: string | number): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
-    return await Treasury.buyBonds(decimalToBalance(amount));
+    const cashPrice: BigNumber = await this.getBondOraclePriceInLastTWAP();
+    return await Treasury.buyBonds(decimalToBalance(amount),cashPrice);
   }
 
   /**
