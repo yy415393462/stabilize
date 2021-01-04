@@ -8,7 +8,8 @@ const useBoardroomVersion = () => {
   const stakedBalance = useStakedBalanceOnBoardroom();
 
   const updateState = useCallback(async () => {
-    setBoardroomVersion(await basisCash.fetchBoardroomVersionOfUser());
+    //setBoardroomVersion(await basisCash.fetchBoardroomVersionOfUser());
+    setBoardroomVersion('last')
   }, [basisCash?.isUnlocked, stakedBalance]);
 
   useEffect(() => {

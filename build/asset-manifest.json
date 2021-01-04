@@ -1,0 +1,39 @@
+{
+  "files": {
+    "static/js/0.d775acc2.chunk.js": "/static/js/0.d775acc2.chunk.js",
+    "main.css": "/static/css/main.ffcc6ad9.chunk.css",
+    "main.js": "/static/js/main.a9377969.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.f44a1a6d.js",
+    "static/js/3.7e529d17.chunk.js": "/static/js/3.7e529d17.chunk.js",
+    "static/js/4.52240daa.chunk.js": "/static/js/4.52240daa.chunk.js",
+    "static/js/5.5fa0da34.chunk.js": "/static/js/5.5fa0da34.chunk.js",
+    "static/js/6.335cd04f.chunk.js": "/static/js/6.335cd04f.chunk.js",
+    "static/js/7.c59235f1.chunk.js": "/static/js/7.c59235f1.chunk.js",
+    "static/js/8.dd2e53de.chunk.js": "/static/js/8.dd2e53de.chunk.js",
+    "static/js/9.47fb3c8a.chunk.js": "/static/js/9.47fb3c8a.chunk.js",
+    "static/js/10.55d66df0.chunk.js": "/static/js/10.55d66df0.chunk.js",
+    "index.html": "/index.html",
+    "precache-manifest.7a235fde7ab51c1daf599d4f56a19169.js": "/precache-manifest.7a235fde7ab51c1daf599d4f56a19169.js",
+    "service-worker.js": "/service-worker.js",
+    "static/js/3.7e529d17.chunk.js.LICENSE.txt": "/static/js/3.7e529d17.chunk.js.LICENSE.txt",
+    "static/js/5.5fa0da34.chunk.js.LICENSE.txt": "/static/js/5.5fa0da34.chunk.js.LICENSE.txt",
+    "static/js/6.335cd04f.chunk.js.LICENSE.txt": "/static/js/6.335cd04f.chunk.js.LICENSE.txt",
+    "static/js/7.c59235f1.chunk.js.LICENSE.txt": "/static/js/7.c59235f1.chunk.js.LICENSE.txt",
+    "static/js/8.dd2e53de.chunk.js.LICENSE.txt": "/static/js/8.dd2e53de.chunk.js.LICENSE.txt",
+    "static/media/DAI.png": "/static/media/DAI.17db7fc2.png",
+    "static/media/USDC.png": "/static/media/USDC.c76b33ca.png",
+    "static/media/USDT.png": "/static/media/USDT.839a0f0d.png",
+    "static/media/basis-bond-logo.svg": "/static/media/basis-bond-logo.80fb5592.svg",
+    "static/media/basis-cash-logo.svg": "/static/media/basis-cash-logo.89e29678.svg",
+    "static/media/basis-share-logo.svg": "/static/media/basis-share-logo.466cf09b.svg",
+    "static/media/farmer.png": "/static/media/farmer.0a327c74.png",
+    "static/media/sUSD.png": "/static/media/sUSD.f8fec857.png",
+    "static/media/ycrv.png": "/static/media/ycrv.88ae1ab3.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f44a1a6d.js",
+    "static/js/3.7e529d17.chunk.js",
+    "static/css/main.ffcc6ad9.chunk.css",
+    "static/js/main.a9377969.chunk.js"
+  ]
+}
