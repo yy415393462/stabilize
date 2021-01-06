@@ -28,14 +28,14 @@ const configurations: { [env: string]: Configuration } = {
     defaultProvider: 'https://kovan.infura.io/v3/9ff09f1a3c284d28830665290dab81c5', //'https://mainnet.infura.io/v3/06ecf536272c43c78adfba29b908a68d',
     deployments: require('./basis-cash/deployments/deployments.mainnet.json'),
     externalTokens: {
-      DAI: ['0xa29b54508a209cebbd10f86dcb292dd4f3137d11', 18],
+      DAI: ['0x7855c49b1147bce38ce1708c2a06b64c1560cb12', 6],
       'BAC_DAI-UNI-LPv2': ['0xe8D04721D84Ef1eb2efd001Cc936AddB254EE1c7', 18],
       'BAS_DAI-UNI-LPv2': ['0x66481f04396DC66D5693cb71C3577Ef52D3A2f5f', 18],
       USDT: ['0x7855c49b1147bce38ce1708c2a06b64c1560cb12',6]
     },
-    baseLaunchDate: new Date('2020-11-26T00:00:00Z'),
-    bondLaunchesAt: new Date('2020-12-03T15:00:00Z'),
-    boardroomLaunchesAt: new Date('2020-12-11T00:00:00Z'),
+    baseLaunchDate: new Date('2021-01-06T00:00:00Z'),
+    bondLaunchesAt: new Date('2021-01-06T00:00:00Z'),
+    boardroomLaunchesAt: new Date('2021-01-06T00:00:00Z'),
     refreshInterval: 10000,
     gasLimitMultiplier: 1.1,
   },
