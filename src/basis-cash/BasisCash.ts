@@ -93,6 +93,8 @@ export class BasisCash {
    */
   async getCashStatFromUniswap(): Promise<TokenStat> {
     const supply = await this.BAC.displayedTotalSupply();
+    //const a = await this.getTokenPriceFromUniswap(this.BAC);
+    //console.log(a)
     return {
       priceInDAI: await this.getTokenPriceFromUniswap(this.BAC),
       totalSupply: supply,
@@ -112,13 +114,13 @@ export class BasisCash {
     const elapsedSec = Math.floor(Date.now() / 1000 - (await Oracle.blockTimestampLast()));
 
     const denominator112 = BigNumber.from(2).pow(112);
-    const denominator1e18 = BigNumber.from(10).pow(18);
+    const denominator1e18 = BigNumber.from(10).pow(6);
     const cashPriceTWAP = cumulativePrice
       .sub(cumulativePriceLast)
       .mul(denominator1e18)
       .div(elapsedSec)
       .div(denominator112);
-
+    
     const totalSupply = await this.BAC.displayedTotalSupply();
     return {
       priceInDAI: getDisplayBalance(cashPriceTWAP),
@@ -161,7 +163,7 @@ export class BasisCash {
     const { chainId } = this.config;
     const { DAI } = this.config.externalTokens;
 
-    const dai = new Token(chainId, DAI[0], 18);
+    const dai = new Token(chainId, DAI[0], 6);
     const token = new Token(chainId, tokenContract.address, 18);
 
     try {
@@ -180,6 +182,7 @@ export class BasisCash {
   async buyBonds(amount: string | number): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
     const cashPrice: BigNumber = await this.getBondOraclePriceInLastTWAP();
+    console.log(cashPrice.toString())
     return await Treasury.buyBonds(decimalToBalance(amount),cashPrice);
   }
 
@@ -190,7 +193,7 @@ export class BasisCash {
   async redeemBonds(amount: string): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
     const cashPrice: BigNumber = await this.getBondOraclePriceInLastTWAP();
-    //console.log(cashPrice.toString())
+    console.log(cashPrice.toString())
     return await Treasury.redeemBonds(decimalToBalance(amount),cashPrice);
   }
 

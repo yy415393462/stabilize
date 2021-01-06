@@ -98,7 +98,7 @@ const Bond: React.FC = () => {
                       : '-'
                   }
                   onExchange={handleBuyBonds}
-                  disabled={!bondStat || cashIsOverpriced}
+                  disabled={!bondStat || !cashIsOverpriced}
                 />
               </StyledCardWrapper>
               <StyledStatsWrapper>
