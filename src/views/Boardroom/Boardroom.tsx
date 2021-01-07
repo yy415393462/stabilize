@@ -31,6 +31,7 @@ const Boardroom: React.FC = () => {
   const stakedBalance = useStakedBalanceOnBoardroom();
 
   const cashStat = useCashPriceInEstimatedTWAP();
+  //console.log(cashStat)
   const treasuryAmount = useTreasuryAmount();
   const scalingFactor = useMemo(
     () => (cashStat ? Number(cashStat.priceInDAI).toFixed(2) : null),

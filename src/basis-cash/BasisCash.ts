@@ -108,6 +108,7 @@ export class BasisCash {
   async getCashStatInEstimatedTWAP(): Promise<TokenStat> {
     const { Oracle } = this.contracts;
 
+    //console.log(this)
     // estimate current TWAP price
     const cumulativePrice: BigNumber = await this.bacDai.price0CumulativeLast();
     const cumulativePriceLast = await Oracle.price0CumulativeLast();
@@ -120,8 +121,10 @@ export class BasisCash {
       .mul(denominator1e18)
       .div(elapsedSec)
       .div(denominator112);
-    
+    //console.log("cumulativePrice",cumulativePrice.toString())
+    //console.log("cumulativePriceLast",cumulativePriceLast.toString())
     const totalSupply = await this.BAC.displayedTotalSupply();
+    
     return {
       priceInDAI: getDisplayBalance(cashPriceTWAP),
       totalSupply,
@@ -182,7 +185,7 @@ export class BasisCash {
   async buyBonds(amount: string | number): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
     const cashPrice: BigNumber = await this.getBondOraclePriceInLastTWAP();
-    console.log(cashPrice.toString())
+    //console.log(cashPrice.toString())
     return await Treasury.buyBonds(decimalToBalance(amount),cashPrice);
   }
 
@@ -193,7 +196,7 @@ export class BasisCash {
   async redeemBonds(amount: string): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
     const cashPrice: BigNumber = await this.getBondOraclePriceInLastTWAP();
-    console.log(cashPrice.toString())
+    //console.log(cashPrice.toString())
     return await Treasury.redeemBonds(decimalToBalance(amount),cashPrice);
   }
 

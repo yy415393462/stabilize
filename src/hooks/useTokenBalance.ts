@@ -9,6 +9,8 @@ const useTokenBalance = (token: ERC20) => {
   const basisCash = useBasisCash();
 
   const fetchBalance = useCallback(async () => {
+    //const a = await token.balanceOf(basisCash.myAccount)
+    //console.log(a.toString())
     setBalance(await token.balanceOf(basisCash.myAccount));
   }, [basisCash?.isUnlocked, token]);
 
