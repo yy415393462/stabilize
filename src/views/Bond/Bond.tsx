@@ -97,7 +97,7 @@ const Bond: React.FC = () => {
                         )}% return when BAC > $1`
                   }
                   onExchange={handleBuyBonds}
-                  disabled={!bondStat || isBondRedeemable}
+                  disabled={!bondStat || !isBondPurchasable}
                 />
               </StyledCardWrapper>
               <StyledStatsWrapper>

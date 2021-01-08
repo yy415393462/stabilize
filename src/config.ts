@@ -42,7 +42,7 @@ const configurations: { [env: string]: Configuration } = {
 };
 
 export const bankDefinitions: { [contractName: string]: BankInfo } = {
-/*   BACDAIPool: {
+  BACDAIPool: {
     name: 'Earn BAC by DAI',
     contract: 'BACDAIPool',
     depositTokenName: 'DAI',
@@ -65,7 +65,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'BAC',
     finished: true,
     sort: 5,
-  }, */
+  },
   AICUSDTPool: {
     name: 'Earn AIC by USDT',
     contract: 'AICUSDTPool',
@@ -74,14 +74,14 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     finished: false,
     sort: 6,
   },
- /*  BACyCRVPool: {
+  BACyCRVPool: {
     name: 'Earn BAC by yCRV',
     contract: 'BACyCRVPool',
     depositTokenName: 'yCRV',
     earnTokenName: 'BAC',
     finished: true,
     sort: 7,
-  }, */
+  },
   DAIAICLPTokenSharePool: {
     name: 'Earn AIS by AIC_DAI-LP',
     contract: 'DAIAICLPTokenSharePool',
