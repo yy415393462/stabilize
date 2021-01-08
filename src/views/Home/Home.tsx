@@ -22,7 +22,6 @@ const Home: React.FC = () => {
     if (Date.now() < config.bondLaunchesAt.getTime()) {
       bond.priceInDAI = '-';
     }
-
     setStats({ cash, bond, share });
   }, [basisCash, setStats]);
 

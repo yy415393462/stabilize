@@ -27,7 +27,7 @@ import useRedeemOnBoardroom from '../../../hooks/useRedeemOnBoardroom';
 
 const Stake: React.FC = () => {
   const basisCash = useBasisCash();
-  //const boardroomVersion = useBoardroomVersion();
+
   const [approveStatus, approve] = useApprove(
     basisCash.BAS,
     basisCash.currentBoardroom().address,

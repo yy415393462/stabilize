@@ -73,6 +73,7 @@ export class BasisCash {
     }
     this.bacDai = this.bacDai.connect(this.signer);
     console.log(`🔓 Wallet is unlocked. Welcome, ${account}!`);
+
   }
 
   get isUnlocked(): boolean {
@@ -93,8 +94,6 @@ export class BasisCash {
    */
   async getCashStatFromUniswap(): Promise<TokenStat> {
     const supply = await this.BAC.displayedTotalSupply();
-    //const a = await this.getTokenPriceFromUniswap(this.BAC);
-    //console.log(a)
     return {
       priceInDAI: await this.getTokenPriceFromUniswap(this.BAC),
       totalSupply: supply,
@@ -108,23 +107,34 @@ export class BasisCash {
   async getCashStatInEstimatedTWAP(): Promise<TokenStat> {
     const { Oracle } = this.contracts;
 
-    //console.log(this)
+    const totalSupply = await this.BAC.displayedTotalSupply();
+
     // estimate current TWAP price
     const cumulativePrice: BigNumber = await this.bacDai.price0CumulativeLast();
     const cumulativePriceLast = await Oracle.price0CumulativeLast();
-    const elapsedSec = Math.floor(Date.now() / 1000 - (await Oracle.blockTimestampLast()));
 
     const denominator112 = BigNumber.from(2).pow(112);
     const denominator1e18 = BigNumber.from(10).pow(6);
+
+    if (cumulativePrice.toString() === cumulativePriceLast.toString()) {
+      const oldTWAPOracle = await Oracle.price0Average();
+      const cashPriceTWAPOld = oldTWAPOracle.mul(denominator1e18).div(denominator112);
+      return {
+        priceInDAI: getDisplayBalance(cashPriceTWAPOld),
+        totalSupply,
+      };
+    }
+
+    const bacDaiReserves = await this.bacDai.getReserves();
+    const blockTimestampLastUniswap = BigNumber.from(bacDaiReserves[2]);
+    const elapsedSec = blockTimestampLastUniswap.sub(await Oracle.blockTimestampLast());
+
     const cashPriceTWAP = cumulativePrice
       .sub(cumulativePriceLast)
       .mul(denominator1e18)
       .div(elapsedSec)
       .div(denominator112);
-    //console.log("cumulativePrice",cumulativePrice.toString())
-    //console.log("cumulativePriceLast",cumulativePriceLast.toString())
-    const totalSupply = await this.BAC.displayedTotalSupply();
-    
+
     return {
       priceInDAI: getDisplayBalance(cashPriceTWAP),
       totalSupply,
@@ -142,8 +152,8 @@ export class BasisCash {
   }
 
   async getBondStat(): Promise<TokenStat> {
-
     const decimals = BigNumber.from(10).pow(18);
+
     const cashPrice: BigNumber = await this.getBondOraclePriceInLastTWAP();
     const bondPrice = cashPrice.pow(2).div(decimals);
 
@@ -184,9 +194,7 @@ export class BasisCash {
    */
   async buyBonds(amount: string | number): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
-    const cashPrice: BigNumber = await this.getBondOraclePriceInLastTWAP();
-    //console.log(cashPrice.toString())
-    return await Treasury.buyBonds(decimalToBalance(amount),cashPrice);
+    return await Treasury.buyBonds(decimalToBalance(amount), await this.getBondOraclePriceInLastTWAP());
   }
 
   /**
@@ -195,9 +203,7 @@ export class BasisCash {
    */
   async redeemBonds(amount: string): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
-    const cashPrice: BigNumber = await this.getBondOraclePriceInLastTWAP();
-    console.log(cashPrice.toString())
-    return await Treasury.redeemBonds(decimalToBalance(amount),cashPrice);
+    return await Treasury.redeemBonds(decimalToBalance(amount), await this.getBondOraclePriceInLastTWAP());
   }
 
   async earnedFromBank(poolName: ContractName, account = this.myAccount): Promise<BigNumber> {
@@ -215,7 +221,7 @@ export class BasisCash {
     account = this.myAccount,
   ): Promise<BigNumber> {
     const pool = this.contracts[poolName];
-
+    
     try {
       return await pool.balanceOf(account);
     } catch (err) {
@@ -282,7 +288,7 @@ export class BasisCash {
 
   async getStakedSharesOnBoardroom(): Promise<BigNumber> {
     const Boardroom = this.currentBoardroom();
- 
+
     return await Boardroom.balanceOf(this.myAccount);
   }
 
