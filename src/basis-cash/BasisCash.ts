@@ -196,7 +196,7 @@ export class BasisCash {
   async redeemBonds(amount: string): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
     const cashPrice: BigNumber = await this.getBondOraclePriceInLastTWAP();
-    //console.log(cashPrice.toString())
+    console.log(cashPrice.toString())
     return await Treasury.redeemBonds(decimalToBalance(amount),cashPrice);
   }
 

@@ -7,7 +7,7 @@ import { BigNumber } from 'ethers';
 const configurations: { [env: string]: Configuration } = {
   development: {
     chainId: ChainId.KOVAN,
-    etherscanUrl: 'https://kovan.etherscan.io/',
+    etherscanUrl: 'https://kovan.etherscan.io',
     defaultProvider: 'https://kovan.infura.io/v3/9ff09f1a3c284d28830665290dab81c5', //'https://mainnet.infura.io/v3/06ecf536272c43c78adfba29b908a68d',
     deployments: require('./basis-cash/deployments/deployments.mainnet.json'),
     externalTokens: {
@@ -24,7 +24,7 @@ const configurations: { [env: string]: Configuration } = {
   },
   production: {
     chainId: ChainId.KOVAN,
-    etherscanUrl: 'https://kovan.etherscan.io/',
+    etherscanUrl: 'https://kovan.etherscan.io',
     defaultProvider: 'https://kovan.infura.io/v3/9ff09f1a3c284d28830665290dab81c5', //'https://mainnet.infura.io/v3/06ecf536272c43c78adfba29b908a68d',
     deployments: require('./basis-cash/deployments/deployments.mainnet.json'),
     externalTokens: {
