@@ -1,6 +1,6 @@
 {
     "Oracle": {
-        "address": "0xfd214F0CD9490B4b48238bd94fe195bA2B049EdC",
+        "address": "0xB82b3480bFFa66Ba3EA91D4f5c7eE3Ae1d15814D",
         "abi": [
             {
                 "inputs": [
@@ -1601,7 +1601,7 @@
         ]
     },
     "Boardroom": {
-        "address": "0x67B15fb4021cC1Fbb51E15d98E50C8Fee6A672b0",
+        "address": "0xdDA9765f4DDB037c623f6E1fc4B854b25E2F356f",
         "abi": [
             {
                 "inputs": [
