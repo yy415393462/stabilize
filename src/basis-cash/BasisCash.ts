@@ -114,7 +114,7 @@ export class BasisCash {
     const cumulativePriceLast = await Oracle.price0CumulativeLast();
 
     const denominator112 = BigNumber.from(2).pow(112);
-    const denominator1e18 = BigNumber.from(10).pow(6);
+    const denominator1e18 = BigNumber.from(10).pow(18);
 
     if (cumulativePrice.toString() === cumulativePriceLast.toString()) {
       const oldTWAPOracle = await Oracle.price0Average();
@@ -134,7 +134,6 @@ export class BasisCash {
       .mul(denominator1e18)
       .div(elapsedSec)
       .div(denominator112);
-
     return {
       priceInDAI: getDisplayBalance(cashPriceTWAP),
       totalSupply,
@@ -176,7 +175,7 @@ export class BasisCash {
     const { chainId } = this.config;
     const { DAI } = this.config.externalTokens;
 
-    const dai = new Token(chainId, DAI[0], 6);
+    const dai = new Token(chainId, DAI[0], 18);
     const token = new Token(chainId, tokenContract.address, 18);
 
     try {

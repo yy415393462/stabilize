@@ -9,11 +9,11 @@ const configurations: { [env: string]: Configuration } = {
     chainId: ChainId.KOVAN,
     etherscanUrl: 'https://kovan.etherscan.io',
     defaultProvider: 'https://kovan.infura.io/v3/9ff09f1a3c284d28830665290dab81c5', //'https://mainnet.infura.io/v3/06ecf536272c43c78adfba29b908a68d',
-    deployments: require('./basis-cash/deployments/deployments.mainnet.json'),
+    deployments: require('./basis-cash/deployments/deployments.kovan.json'),
     externalTokens: {
-      DAI: ['0x7855c49b1147bce38ce1708c2a06b64c1560cb12', 6],
-      'BAC_DAI-UNI-LPv2': ['0xe8D04721D84Ef1eb2efd001Cc936AddB254EE1c7', 18],
-      'BAS_DAI-UNI-LPv2': ['0x66481f04396DC66D5693cb71C3577Ef52D3A2f5f', 18],
+      DAI: ['0x82ED4E84BC74B1A52EC1A7771D6A13eED7A8aC6e', 18],
+      'BAC_DAI-UNI-LPv2': ['0x2F057FF78258E51a829025Ea0CE685A1772a4FE4', 18],
+      'BAS_DAI-UNI-LPv2': ['0xa1655Bd897fe5f5549c17e23D32Adae06753C2Cc', 18],
       USDT: ['0x7855c49b1147bce38ce1708c2a06b64c1560cb12',6]
     },
     baseLaunchDate: new Date('2021-01-06T00:00:00Z'),
@@ -26,11 +26,11 @@ const configurations: { [env: string]: Configuration } = {
     chainId: ChainId.KOVAN,
     etherscanUrl: 'https://kovan.etherscan.io',
     defaultProvider: 'https://kovan.infura.io/v3/9ff09f1a3c284d28830665290dab81c5', //'https://mainnet.infura.io/v3/06ecf536272c43c78adfba29b908a68d',
-    deployments: require('./basis-cash/deployments/deployments.mainnet.json'),
+    deployments: require('./basis-cash/deployments/deployments.kovan.json'),
     externalTokens: {
-      DAI: ['0x7855c49b1147bce38ce1708c2a06b64c1560cb12', 6],
-      'BAC_DAI-UNI-LPv2': ['0xe8D04721D84Ef1eb2efd001Cc936AddB254EE1c7', 18],
-      'BAS_DAI-UNI-LPv2': ['0x66481f04396DC66D5693cb71C3577Ef52D3A2f5f', 18],
+      DAI: ['0x82ED4E84BC74B1A52EC1A7771D6A13eED7A8aC6e', 18],
+      'BAC_DAI-UNI-LPv2': ['0x2F057FF78258E51a829025Ea0CE685A1772a4FE4', 18],
+      'BAS_DAI-UNI-LPv2': ['0xa1655Bd897fe5f5549c17e23D32Adae06753C2Cc', 18],
       USDT: ['0x7855c49b1147bce38ce1708c2a06b64c1560cb12',6]
     },
     baseLaunchDate: new Date('2021-01-06T00:00:00Z'),
@@ -42,15 +42,15 @@ const configurations: { [env: string]: Configuration } = {
 };
 
 export const bankDefinitions: { [contractName: string]: BankInfo } = {
-  BACDAIPool: {
-    name: 'Earn BAC by DAI',
-    contract: 'BACDAIPool',
+  NBCDAIPool: {
+    name: 'Earn NBC by DAI',
+    contract: 'NBCDAIPool',
     depositTokenName: 'DAI',
     earnTokenName: 'BAC',
-    finished: true,
+    finished: false,
     sort: 3,
   },
-  BACUSDCPool: {
+  /* BACUSDCPool: {
     name: 'Earn BAC by USDC',
     contract: 'BACUSDCPool',
     depositTokenName: 'USDC',
@@ -65,34 +65,34 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'BAC',
     finished: true,
     sort: 5,
-  },
-  AICUSDTPool: {
-    name: 'Earn AIC by USDT',
-    contract: 'AICUSDTPool',
+  }, */
+  NBCUSDTPool: {
+    name: 'Earn NBC by USDT',
+    contract: 'NBCUSDTPool',
     depositTokenName: 'USDT',
     earnTokenName: 'BAC',
     finished: false,
     sort: 6,
   },
-  BACyCRVPool: {
+ /*  BACyCRVPool: {
     name: 'Earn BAC by yCRV',
     contract: 'BACyCRVPool',
     depositTokenName: 'yCRV',
     earnTokenName: 'BAC',
     finished: true,
     sort: 7,
-  },
-  DAIAICLPTokenSharePool: {
-    name: 'Earn AIS by AIC_DAI-LP',
-    contract: 'DAIAICLPTokenSharePool',
+  }, */
+  DAINBCLPTokenSharePool: {
+    name: 'Earn NBS by NBC_DAI-LP',
+    contract: 'DAINBCLPTokenSharePool',
     depositTokenName: 'BAC_DAI-UNI-LPv2',
     earnTokenName: 'BAS',
     finished: false,
     sort: 1,
   },
-  DAIAISLPTokenSharePool: {
-    name: 'Earn AIS by AIs_DAI-LP',
-    contract: 'DAIAISLPTokenSharePool',
+  DAINBSLPTokenSharePool: {
+    name: 'Earn NBS by NBS_DAI-LP',
+    contract: 'DAINBSLPTokenSharePool',
     depositTokenName: 'BAS_DAI-UNI-LPv2',
     earnTokenName: 'BAS',
     finished: false,
