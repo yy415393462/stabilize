@@ -6,7 +6,7 @@ export const getDisplayBalance = (balance: BigNumber, decimals = 18, fractionDig
 };
 
 export const getFullDisplayBalance = (balance: BigNumber, decimals = 18) => {
-  return getDisplayBalance(balance, decimals, 18);
+  return getDisplayBalance(balance, decimals);
 };
 
 export function getBalance(balance: BigNumber, decimals = 18) : number {
