@@ -1601,7 +1601,7 @@
         ]
     },
     "Boardroom": {
-        "address": "0xdDA9765f4DDB037c623f6E1fc4B854b25E2F356f",
+        "address": "0x17bdADdA5505d6C799dFd3Af33b1Cc82c35E5c31",
         "abi": [
             {
                 "inputs": [
@@ -1970,7 +1970,7 @@
         ]
     },
     "Treasury": {
-        "address": "0x17bdADdA5505d6C799dFd3Af33b1Cc82c35E5c31",
+        "address": "0xdDA9765f4DDB037c623f6E1fc4B854b25E2F356f",
         "abi": [
             {
                 "inputs": [
